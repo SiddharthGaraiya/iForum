@@ -42,7 +42,7 @@
     }
 ?>
 <div class="conatiner d-flex justify-content-center align-items-center my-4" id="mainContainer">
-    <div class="container w-50 shadow p-5 rounded-4 mx-5">
+    <div class="container w-85 shadow p-5 rounded-4 mx-5">
         <h2 class="fw-semibold mb-4 text-center">USER SIGNUP</h2>
         <form method="post" action="partials/__handleSignup.php">
             <div class="mb-3">
