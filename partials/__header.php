@@ -13,8 +13,21 @@ require '__dbconnect.php';
     <title>iForum - Signup</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-       
+        <style>
+    
+        @media only screen and (max-width: 900px) {
+            #cardContainer {
+                /* width: 85vw !important; */
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+            
+            #cardContainer > div 
+            {
+                width: 75vw !important;
+            }
+
+        }
     </style>
 </head>
 
@@ -31,7 +44,31 @@ require '__dbconnect.php';
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="index.php">Home</a>
                 </li>
-                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Categories
+                    </a>
+                    <ul class="dropdown-menu">
+                        <?php 
+                        
+                        $sql_get_categories = 'SELECT * FROM `categories`';
+                        $result = mysqli_query($conn, $sql_get_categories);
+
+                        if($result)
+                        {
+                            if(mysqli_num_rows($result))
+                            {
+                                while($row = mysqli_fetch_assoc($result))
+                                {
+                                    echo '<li><a class="dropdown-item" href="threads.php?category_id='.$row['category_id'].'">'.$row['category_name'].'</a></li>';
+                                }
+                            }
+                        }
+                        
+                        ?>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="contact.php">Contact</a>
                 </li>
