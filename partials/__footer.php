@@ -1,4 +1,4 @@
-<div class=" container-fluid bg-dark text-light text-center py-2">
+<div class=" container-fluid bg-dark text-light text-center p-3">
 <p class="m-0">Copyright iForum Coding Forum | All rights Reserved 2024</p>
 </div>
 
@@ -8,7 +8,6 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    
 </body>
 
 </html>
