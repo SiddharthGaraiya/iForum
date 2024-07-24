@@ -1,3 +1,14 @@
-<div class="container-fluid bg-dark text-light text-center py-2">
+<div class=" container-fluid bg-dark text-light text-center py-2">
 <p class="m-0">Copyright iForum Coding Forum | All rights Reserved 2024</p>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    
+</body>
+
+</html>
