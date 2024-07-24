@@ -18,7 +18,7 @@ require '__dbconnect.php';
     </style>
 </head>
 
-<body class="bg-light " style ="display:flex;flex-direction:column; gap:2;">
+<body class="bg-light " style ="display:flex;flex-direction:column;justify-content:space-between; min-height: 100vh">
 <nav class="navbar navbar-expand-lg bg-body-tertiary position-sticky top-0 z-3" data-bs-theme="dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="index.php">iForum</a>
