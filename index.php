@@ -1,6 +1,10 @@
 <?php
     require "partials/__header.php";
-    ?>
+?>
+
+<script>
+    document.title ="iForum | HomePage"
+</script>
 
 <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
     <div class="carousel-indicators">
