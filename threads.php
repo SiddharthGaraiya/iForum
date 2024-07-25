@@ -27,3 +27,28 @@
         unset($_SESSION['alert']);
     }
 ?>
+
+<div class="container" id="mainContainer">
+    <div class="container">
+
+        <?php
+        $sql_category_detail = "SELECT * FROM `categories` WHERE `category_id` = '$category_id'";
+        $result = mysqli_query($conn, $sql_category_detail);
+
+        if (mysqli_num_rows($result) == 0) {
+            header('location: not_found.php');
+            exit;
+        }
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="p-4 my-5 bg-body-tertiary rounded-4 border shadow">
+                    <div class="container-fluid my-4">
+                        <h1 class="display-5 fw-semibold">Hello, Welcome to ' . $row['category_name'] . ' Forum!</h1>
+                        <p class="fs-4 my-4">- ' . $row['category_description'] . '</p>
+                        <hr>
+                        <p class="fs-5 my-4">This is a peer to peer forum. No Spam / Advertising / Self-promote in the forums. Do not post “offensive” threads, comments or links. Remain respectful of other members at all times.</p>
+                    </div>
+
+                </div>';
+        }
+        ?>
