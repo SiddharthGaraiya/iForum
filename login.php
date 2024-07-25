@@ -52,6 +52,11 @@ if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'somethingwentwrong') {
     </div>
 </div>
 
+<script>
+    document.title ="iForum | Login"
+</script>
+
 <?php
 require "partials/__footer.php";
 ?>
+
