@@ -52,3 +52,38 @@
                 </div>';
         }
         ?>
+
+        <div class="p-4 my-5 bg-body-tertiary rounded-4 border shadow">
+            <div class="container-fluid my-4">
+
+                <h2 class="display-6 fw-semibold">Start a Thread - </h2>
+                <form action="partials/__handleThread.php" method="post" class="my-4">
+
+                    <?php
+                    echo '<input type="hidden" name="category_id" id="category_id" value="' . $category_id . '">';
+
+                    if (isset($_SESSION['loggedIn']) and $_SESSION['loggedIn'] == 'yes')
+                    {
+
+                        echo '<div class="mb-3">
+                        <label for="title" class="form-label fs-5">Title -</label>
+                        <input type="text" class="form-control" id="title" name="title" required maxlength="255">
+                        </div>
+                        <div class="mb-3">
+                        <label for="description" class="form-label fs-5">Description -</label>
+                        <textarea class="form-control" id="description" name="description" rows="5"
+                        required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>';
+                        }
+                        else
+                        {
+                            echo '<p class="fs-5">Please Login to Start a Thread.</p>';
+                        }
+
+                        ?>
+                </form>
+            </div>
+        </div>
+
+     
