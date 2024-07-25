@@ -138,3 +138,7 @@
         </div>
     </div>
 </div>
+
+<?php
+    require 'partials/__footer.php'
+?>
