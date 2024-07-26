@@ -41,6 +41,7 @@
         }
 
         while ($row = mysqli_fetch_assoc($result)) {
+            $category_name = $row['category_name'];
             echo '<div class="p-4 my-5 bg-body-tertiary rounded-4 border shadow">
                     <div class="container-fluid my-4">
                         <h1 class="display-5 fw-semibold">Hello, Welcome to ' . $row['category_name'] . ' Forum!</h1>
@@ -138,7 +139,9 @@
         </div>
     </div>
 </div>
-
+<script>
+    document.title="iForum | <?=$category_name?>"
+</script>
 <?php
     require 'partials/__footer.php'
 ?>
