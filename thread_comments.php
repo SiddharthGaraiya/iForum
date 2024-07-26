@@ -6,7 +6,7 @@
 
 <div class="container" id="mainContainer">
     <div class="container">
-        <!-- Thread Details Section-->
+        <!-- Thread Details  -->
         <?php
             $sql_thread_detail = "SELECT * FROM `threads` WHERE `thread_id` = '$thread_id'";
             $result = mysqli_query($conn, $sql_thread_detail);
@@ -44,7 +44,31 @@
 
         ?>
 
-        
+        <!-- Write A Comment Section -->
+        <div class="p-4 my-5 bg-body-tertiary rounded-4 border shadow">
+            <div class="container-fluid my-4">
+
+                <h2 class="display-6 fw-semibold">Write a comment - </h2>
+                <form action="partials/__handleComment.php" method="post" class="my-4">
+                    <?php
+
+                        echo '<input type="hidden" name="thread_id" id="thread_id" value="' . $thread_id . '">';
+
+                        if (isset($_SESSION['loggedIn']) and $_SESSION['loggedIn'] == 'yes') {
+                            echo ' <div class="mb-3">
+                            <textarea class="form-control" id="comment" name="comment" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Submit</button>';
+
+                        } else {
+                            echo '<p class="fs-5">Please Login to Write a Comment.</p>';
+                        }
+                        ?>
+                </form>
+            </div>
+        </div>
+
+       
     </div>
 </div>
 
