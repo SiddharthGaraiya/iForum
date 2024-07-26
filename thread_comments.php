@@ -2,6 +2,35 @@
     require 'partials/__header.php';
     require 'partials/__dbconnect.php';
     $thread_id = $_GET['thread_id'];
+   
+    // alert for sucess
+    if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'success') {
+        echo '<div class="container"><div class="container"><div class="alert alert-success alert-dismissible fade show container mx-auto mt-5 rounded-3" role="alert">
+                <strong>Success!</strong> Comment was added successfully.
+                <a href="thread_comments.php?thread_id=' . $thread_id . '"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                </div></div></div>';
+
+        unset($_SESSION['alert']);
+    }
+    // alert for failed
+    if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'failed') {
+        echo '<div class="container"><div class="container"><div class="alert alert-danger alert-dismissible fade show container mx-auto mt-5 rounded-3" role="alert">
+                <strong>Error!</strong> Comment was not added, please try again later.
+                <a href="thread_comments.php?thread_id=' . $thread_id . '"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                </div></div></div>';
+
+        unset($_SESSION['alert']);
+    }
+    // alert for something went wrong
+    if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'wrong') {
+        echo '<div class="container"><div class="container"><div class="alert alert-danger alert-dismissible fade show container mx-auto mt-5 rounded-3" role="alert">
+        <strong>Error!</strong> Something went wrong, please try again later.
+        <a href="thread_comments.php?thread_id=' . $thread_id . '"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+        </div></div></div>';
+
+        unset($_SESSION['alert']);
+    }
+     
 ?>
 
 <div class="container" id="mainContainer">
