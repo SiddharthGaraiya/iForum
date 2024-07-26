@@ -68,7 +68,53 @@
             </div>
         </div>
 
-       
+        <!-- Browse Comments Section -->
+        <div class="p-4 my-5 bg-body-tertiary rounded-4 border shadow">
+            <div class="container-fluid my-4">
+                <h2 class="display-6 fw-semibold pb-3">Browse Comments -</h2>
+
+                <?php
+                    $sql_get_threads = "SELECT * FROM `comments` WHERE `thread_id` = '$thread_id'";
+                    $result = mysqli_query($conn, $sql_get_threads);
+
+                    if ($result) {
+                        if (mysqli_num_rows($result)) {
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                $comment_content = $row['comment_content'];
+                                $comment_user_id = $row['user_id'];
+                                $sql_get_user = "SELECT * FROM `users` WHERE `user_id` = '$comment_user_id'";
+                                $result_user = mysqli_query($conn, $sql_get_user);
+                                if ($result_user) {
+                                    if (mysqli_num_rows($result_user)) {
+                                        while ($row_user = mysqli_fetch_assoc($result_user)) {
+                                            $thread_username = $row_user['username'];
+                                            $timestamp_comments = $row['timestamp'];
+                                            $timestamp_comments = date("h:i a | d-m-Y", strtotime($timestamp_comments));
+
+                                            echo '<div class="d-flex align-items-center my-3">
+                                            <div class="flex-shrink-0" style="width: 7vw">
+                                            <img src="img/forum_user_default.png" alt="" class="img-fluid">
+                                            </div>
+                                            <div class="flex-grow-1 ms-3"><p class="mt-2 fs-5 fw-semibold m-0">' . $thread_username . ' at ' . $timestamp_comments . '</p>
+                                            <p class="fs-5">' . $comment_content . '</p>
+                                            </div>
+                                            </div>
+                                            <p class="text-center m-0 opacity-50">────</p>';
+
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            echo '<p class="fs-4 my-4"> - No Comments Found, Be the first one to comment on this thread.</p>';
+                        }
+                    }
+
+                    ?>
+            </div>
+        </div>
     </div>
 </div>
 
