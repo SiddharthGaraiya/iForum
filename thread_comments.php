@@ -117,7 +117,9 @@
         </div>
     </div>
 </div>
-
+<script>
+    document.title="iForum | Thread"
+</script>
 <?php
     require 'partials/__footer.php'
 ?>
