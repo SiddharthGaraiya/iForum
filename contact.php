@@ -1,5 +1,30 @@
 <?php
     require "partials/__header.php";
+
+    if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'success')
+    {
+        echo '<div class="container p-0 mt-5"><div class="container p-0"><div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Success |</strong> Your message has been received succesfully, we\'ll get back to you ASAP.
+                            <a href="contact.php"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                            </div></div></div>';
+        unset($_SESSION['alert']);
+    }
+    if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'failed')
+    {
+        echo '<div class="container p-0 mt-5"><div class="container p-0"><div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error |</strong> Your message was not received succesfully, please try again.
+                            <a href="contact.php"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                            </div></div></div>';
+        unset($_SESSION['alert']);
+    }
+    if (isset($_SESSION['alert']) and $_SESSION['alert'] == 'wrong')
+    {
+        echo '<div class="container p-0 mt-5"><div class="container p-0"><div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error |</strong> Something went wrong, please try again later.
+                            <a href="contact.php"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                            </div></div></div>';
+        unset($_SESSION['alert']);
+    }
 ?>
 
 <section class="bg-light py-3 py-md-5">
