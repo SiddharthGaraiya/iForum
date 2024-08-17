@@ -45,38 +45,79 @@
     <div class="container w-85 shadow p-5 rounded-4 mx-5">
         <h2 class="fw-semibold mb-4 text-center">USER SIGNUP</h2>
         <form method="post" action="partials/__handleSignup.php">
-            <div class="mb-3">
-                <label for="name" class="form-label fw-semibold">Full Name</label>
-                <input type="text" class="form-control" id="name" name="name" required maxlength="255">
-            </div>
-            <div class="mb-3">
-                <label for="username" class="form-label fw-semibold">Username</label>
-                <input type="text" class="form-control" id="username" name="username" required maxlength="255">
-                <div id="username_availability_response"></div>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label fw-semibold">Email address</label>
-                <input type="email" class="form-control" id="email" name="email" required maxlength="255">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label fw-semibold">Password</label>
-                <input type="password" class="form-control" id="password" name="password"
-                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required maxlength="255" aria-describedby="passwordRequirements">
-                <div id="passwordRequirements" class="form-text">Password must contain 8 or more characters that are
-                    of at least one number, and one uppercase and lowercase letter.</div>
-            </div>
-            <div class="mb-3">
-                <label for="cpassword" class="form-label fw-semibold">Confirm Password</label>
-                <input type="password" class="form-control" id="cpassword" name="cpassword" required maxlength="255"
-                    aria-describedby="passwordCheck">
-                <div id="passwordCheck" class="form-text"></div>
-            </div>
-            <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary fs-6 px-4" id="signUp">Signup</button>
-            </div>
-        </form>
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-semibold">Full Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required maxlength="255">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label fw-semibold">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required maxlength="255">
+                    <div id="username_availability_response"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-semibold">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required maxlength="255">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label fw-semibold">Password</label>
+                    <input type="password" class="form-control" id="password" name="password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required maxlength="255" aria-describedby="passwordRequirements">
+                    <div id="passwordRequirements" class="form-text">Password must contain 8 or more characters that are
+                        of at least one number, and one uppercase and lowercase letter.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="cpassword" class="form-label fw-semibold">Confirm Password</label>
+                    <input type="password" class="form-control" id="cpassword" name="cpassword" required maxlength="255"
+                        aria-describedby="passwordCheck">
+                    <div id="passwordCheck" class="form-text"></div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary fs-6 px-4" id="signUp">Signup</button>
+                </div>
+            </form>
     </div>
 </div>
+
+<script>
+        let password = document.getElementById('password');
+        let cpassword = document.getElementById('cpassword');
+        let passwordcheck = document.getElementById('passwordCheck');
+        let btn = document.getElementById('signUp');
+
+        cpassword.addEventListener('keyup', () => {
+            if (cpassword.value === password.value) {
+                cpassword.style.borderColor = '#dee2e6';
+                passwordcheck.style.color = 'green';
+                passwordcheck.innerText = "Password Matches";
+                btn.classList.remove('disabled');
+            }
+            else {
+                cpassword.style.borderColor = 'red';
+                passwordcheck.style.color = 'red';
+                document.getElementById('passwordCheck').innerText = "Password not same, please check."
+                btn.classList.add('disabled');
+            }
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#username").keyup(function () {
+                var username = $(this).val().trim();
+                if (username != '') {
+                    $.ajax({
+                        url: 'partials/__username_availability_checker.php',
+                        type: 'post',
+                        data: { username: username },
+                        success: function (response) {
+                            $('#username_availability_response').html(response);
+                        }
+                    });
+                } else {
+                    $("#username_availability_response").html("");
+                }
+            });
+        });
+    </script>
 
 <?php
 require "partials/__footer.php";
